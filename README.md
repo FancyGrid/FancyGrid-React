@@ -78,8 +78,8 @@ This component uses gulp to transform React JSX files and combine the rest of th
 
 ### Usage
 
-`gulp dev` - Builds the unminified version as /dist/fancygrid-react.js
+`gulp dev` - Builds the unminified version as `/dist/fancygrid-react.js`
 
-`gulp prod` - Builds the minified version as /dist/fancygrid-react.min.js
+`gulp prod` - Builds the minified version as `/dist/fancygrid-react.min.js`
 
 This build tool **does not** require all dependent libraries (FancyGrid and React) in the production file. It allows the user to use any bundling tool they choose such as browserify or webpack.
