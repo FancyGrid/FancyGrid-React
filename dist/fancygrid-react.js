@@ -1,7 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-
-import Fancy from 'fancygrid';
+import Fancy from "fancygrid";
 
 class Grid extends React.Component {
   render() {
