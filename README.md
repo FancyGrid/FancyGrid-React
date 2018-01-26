@@ -76,7 +76,7 @@ ReactDOM.render(
 
 This component uses gulp to transform React JSX files and combine the rest of the JavaScript files into one single file.
 
-###Usage
+### Usage
 
 `gulp dev` - Builds the unminified version as /dist/fancygrid-react.js
 
