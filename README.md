@@ -29,7 +29,7 @@ The FancyGrid-React Component exposes 3 components.
 
 ### Components
 All components are wrappers around the entire widgets of FancyGrid.  
-The only one property is config with widget options.  
+The simplest one approach is to use config with widget options.  
 
 ```html
 <!--HTML-->

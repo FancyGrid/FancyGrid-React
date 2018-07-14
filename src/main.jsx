@@ -3,55 +3,134 @@ import Fancy from 'fancygrid';
 
 class Grid extends React.Component {
   render() {
-	return '';
+	var self = this,
+  	  containerProps = this.props.containerProps || {};
+
+    // Add ref to div props
+    containerProps.ref = function (container) {
+	  self.container = container 
+	}
+
+    // Create temp container for our grid
+    return React.createElement('div', containerProps);
   }
+  
   componentDidMount() {
-    let p = this.props;
-	let config = p.config;
+    var me = this,
+	  props = me.props,
+	  config = me.props.config || {},
+	  container = me.container,
+	  parentEl = container.parentElement || container.parentNode;
 	
-	this.widget = new Fancy.Grid(config);
+	for(var p in props){
+	  switch(p){
+		case 'config':
+		  break;
+		default:
+		  config[p] = props[p];
+	  }
+	}
+	
+	parentEl.removeChild(container);
+    me.widget = new Fancy.Grid(parentEl, config);
   }
   
   componentWillUnmount() {
-    this.widget.destroy();
+	if(this.widget.el.dom){
+      this.widget.destroy();
+	}
   }
 }
 
 class Form extends React.Component {
   render() {
-	return '';
+	var self = this,
+  	  containerProps = this.props.containerProps || {};
+
+    // Add ref to div props
+    containerProps.ref = function (container) {
+	  self.container = container 
+	}
+
+    // Create temp container for our grid
+    return React.createElement('div', containerProps);
   }
   componentDidMount() {
-    let p = this.props;
-	let config = p.config;
+    var me = this,
+	  props = me.props,
+	  config = me.props.config || {},
+	  container = me.container,
+	  parentEl = container.parentElement || container.parentNode;
 	
-	this.widget = new Fancy.Form(config);
+	for(var p in props){
+	  switch(p){
+		case 'config':
+		  break;
+		default:
+		  config[p] = props[p];
+	  }
+	}
+	
+	parentEl.removeChild(container);
+    me.widget = new Fancy.Form(parentEl, config);
   }
   
   componentWillUnmount() {
-    this.widget.destroy();
+    if(this.widget.el.dom){
+      this.widget.destroy();
+	}
   }
 }
 
 class Tab extends React.Component {
   render() {
-	return '';
+	var self = this,
+  	  containerProps = this.props.containerProps || {};
+
+    // Add ref to div props
+    containerProps.ref = function (container) {
+	  self.container = container 
+	}
+
+    // Create temp container for our grid
+    return React.createElement('div', containerProps);
   }
   
   componentDidMount() {
-    let p = this.props;
-	let config = p.config;
+      var me = this,
+	  props = me.props,
+	  config = me.props.config || {},
+	  container = me.container,
+	  parentEl = container.parentElement || container.parentNode;
 	
-	this.widget = new Fancy.Tab(config);
+	for(var p in props){
+	  switch(p){
+		case 'config':
+		  break;
+		default:
+		  config[p] = props[p];
+	  }
+	}
+	
+	parentEl.removeChild(container);
+    me.widget = new Fancy.Tab(parentEl, config);
   }
   
   componentWillUnmount() {
-    this.widget.destroy();
+    if(this.widget.el.dom){
+      this.widget.destroy();
+	}
   }
 }
 
 export {
   Grid as grid,
   Form as form,
-  Tab as tab
+  Tab as tab,
+  Grid,
+  Form,
+  Tab,
+  Grid as FancyGridReact,
+  Form as FancyFormReact,
+  Tab as FancyTabReact
 };
