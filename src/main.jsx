@@ -19,8 +19,7 @@ class Grid extends React.Component {
     var me = this,
 	  props = me.props,
 	  config = me.props.config || {},
-	  container = me.container,
-	  parentEl = container.parentElement || container.parentNode;
+	  container = me.container;
 	
 	for(var p in props){
 	  switch(p){
@@ -31,8 +30,9 @@ class Grid extends React.Component {
 	  }
 	}
 	
-	parentEl.removeChild(container);
-    me.widget = new Fancy.Grid(parentEl, config);
+	config.renderOuter = container;
+	
+    me.widget = new Fancy.Grid(config);
   }
   
   componentWillUnmount() {
@@ -59,8 +59,7 @@ class Form extends React.Component {
     var me = this,
 	  props = me.props,
 	  config = me.props.config || {},
-	  container = me.container,
-	  parentEl = container.parentElement || container.parentNode;
+	  container = me.container;
 	
 	for(var p in props){
 	  switch(p){
@@ -71,8 +70,9 @@ class Form extends React.Component {
 	  }
 	}
 	
-	parentEl.removeChild(container);
-    me.widget = new Fancy.Form(parentEl, config);
+	config.renderOuter = container;
+	
+    me.widget = new Fancy.Form(config);
   }
   
   componentWillUnmount() {
@@ -100,8 +100,7 @@ class Tab extends React.Component {
       var me = this,
 	  props = me.props,
 	  config = me.props.config || {},
-	  container = me.container,
-	  parentEl = container.parentElement || container.parentNode;
+	  container = me.container;
 	
 	for(var p in props){
 	  switch(p){
@@ -112,8 +111,9 @@ class Tab extends React.Component {
 	  }
 	}
 	
-	parentEl.removeChild(container);
-    me.widget = new Fancy.Tab(parentEl, config);
+	config.renderOuter = container;
+	
+    me.widget = new Fancy.Tab(config);
   }
   
   componentWillUnmount() {
@@ -124,6 +124,7 @@ class Tab extends React.Component {
 }
 
 export {
+  Fancy,
   Grid as grid,
   Form as form,
   Tab as tab,
