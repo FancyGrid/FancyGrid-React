@@ -3,123 +3,106 @@ import Fancy from 'fancygrid';
 
 class Grid extends React.Component {
   render() {
-	var self = this,
+		let self = this,
   	  containerProps = this.props.containerProps || {};
 
     // Add ref to div props
     containerProps.ref = function (container) {
-	  self.container = container 
-	}
+	  	self.container = container
+		}
 
     // Create temp container for our grid
     return React.createElement('div', containerProps);
   }
   
   componentDidMount() {
-    var me = this,
-	  props = me.props,
-	  config = me.props.config || {},
-	  container = me.container;
+    let me = this,
+			props = me.props,
+			config = me.props.config || {},
+			container = me.container;
 	
-	for(var p in props){
-	  switch(p){
-		case 'config':
-		  break;
-		default:
-		  config[p] = props[p];
-	  }
-	}
-	
-	config.renderOuter = container;
+		for(var p in props){
+			switch(p){
+				case 'config':
+					break;
+				default:
+					config[p] = props[p];
+			}
+		}
+
+		config.renderOuter = container;
 	
     me.widget = new Fancy.Grid(config);
-  }
-  
-  componentWillUnmount() {
-	if(this.widget.el.dom){
-      this.widget.destroy();
-	}
   }
 }
 
 class Form extends React.Component {
   render() {
-	var self = this,
+		let self = this,
   	  containerProps = this.props.containerProps || {};
 
     // Add ref to div props
     containerProps.ref = function (container) {
-	  self.container = container 
-	}
+	  	self.container = container
+		}
 
     // Create temp container for our grid
     return React.createElement('div', containerProps);
   }
+
   componentDidMount() {
-    var me = this,
-	  props = me.props,
-	  config = me.props.config || {},
-	  container = me.container;
+    let me = this,
+		  props = me.props,
+	  	config = me.props.config || {},
+	  	container = me.container;
 	
-	for(var p in props){
-	  switch(p){
-		case 'config':
-		  break;
-		default:
-		  config[p] = props[p];
-	  }
-	}
-	
-	config.renderOuter = container;
+		for(var p in props){
+			switch(p){
+				case 'config':
+					break;
+				default:
+					config[p] = props[p];
+			}
+		}
+
+		config.renderOuter = container;
 	
     me.widget = new Fancy.Form(config);
-  }
-  
-  componentWillUnmount() {
-    if(this.widget.el.dom){
-      this.widget.destroy();
-	}
   }
 }
 
 class Tab extends React.Component {
   render() {
-	var self = this,
+		let self = this,
   	  containerProps = this.props.containerProps || {};
 
     // Add ref to div props
     containerProps.ref = function (container) {
-	  self.container = container 
-	}
+	  	self.container = container
+		}
 
     // Create temp container for our grid
     return React.createElement('div', containerProps);
   }
   
   componentDidMount() {
-      var me = this,
-	  props = me.props,
-	  config = me.props.config || {},
-	  container = me.container;
+    let me = this,
+	  	props = me.props,
+		  config = me.props.config || {},
+		  container = me.container;
 	
-	for(var p in props){
-	  switch(p){
-		case 'config':
-		  break;
-		default:
-		  config[p] = props[p];
-	  }
-	}
+		for(var p in props){
+			switch(p){
+				case 'config':
+					break;
+				default:
+					config[p] = props[p];
+			}
+		}
 	
-	config.renderOuter = container;
+		config.renderOuter = container;
 	
     me.widget = new Fancy.Tab(config);
-  }
-  
-  componentWillUnmount() {
-    if(this.widget.el.dom){
-      this.widget.destroy();
-	}
   }
 }
 

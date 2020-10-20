@@ -1,8 +1,8 @@
-var gulp = require('gulp');
-var react = require('gulp-react');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');  
-var babel = require('gulp-babel');                           
+let gulp = require('gulp');
+let react = require('gulp-react');
+let concat = require('gulp-concat');
+let uglify = require('gulp-uglify');
+let babel = require('gulp-babel');
 
 gulp.task('dev', function(){
     return gulp.src(['./src/main.jsx'])
