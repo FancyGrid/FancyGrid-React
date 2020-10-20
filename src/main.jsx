@@ -34,6 +34,12 @@ class Grid extends React.Component {
 	
     me.widget = new Fancy.Grid(config);
   }
+
+	componentWillUnmount() {
+		if(this.widget.el.dom){
+			this.widget.destroy(false);
+		}
+	}
 }
 
 class Form extends React.Component {
