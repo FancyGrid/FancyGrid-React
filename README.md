@@ -31,55 +31,45 @@ The FancyGrid-React Component exposes 3 components.
 All components are wrappers around the entire widgets of FancyGrid.  
 The simplest one approach is to use config with widget options.  
 
-```html
-<!--HTML-->
-<div id="container-grid"></div>
-<div id="container-form"></div>
-<div id="container-tab"></div>
-```
-
 ```js
 //JavaScript
-var Grid = require('fancygrid-react').grid;
-var Form = require('fancygrid-react').form;
-var Tab = require('fancygrid-react').tab;
-var gridConfig = {
-  ...
-};
+import {Grid, Fancy, Form, Tab} from 'fancygrid-react';
 
-var formConfig = {
-  ...
-};
-
-var tabConfig = {
-  ...
-};
-
-ReactDOM.render(
-  <Grid config={gridConfig} />,
-  document.getElementById('container-grid')
-);
-
-ReactDOM.render(
-  <Form config={formConfig} />,
-  document.getElementById('container-form')
-);
-
-ReactDOM.render(
-  <Tab config={tabConfig} />,
-  document.getElementById('container-tab')
-);
+...
+const getFancyGrid = () => {
+  return (
+    <div style={{marginTop: '5px'}}>
+      <Form
+        theme={'extra-gray'}
+        title={'Form'}
+        items={[{
+          name: 'id',
+          hidden: true
+        },{
+          label: 'Name',
+          emptyText: 'Name',
+          name: 'name'
+        }, {
+          label: 'SurName',
+          emptyText: 'SurName',
+          name: 'surname'
+        }]}>
+      </Form>
+      <Grid
+        height={500}
+        theme={'extra-gray'}
+        selModel={{
+          activeCell: true,
+          type: 'rows'
+        }}
+        defaults={{
+          resizable: true,
+          menu: true
+        }}
+        columns={getColumns()}
+        data={getData()}>
+      </Grid>
+    </div>
+  );
+}
 ```
-
-
-## Build
-
-This component uses gulp to transform React JSX files and combine the rest of the JavaScript files into one single file.
-
-### Usage
-
-`gulp dev` - Builds the unminified version as `/dist/fancygrid-react.js`
-
-`gulp prod` - Builds the minified version as `/dist/fancygrid-react.min.js`
-
-This build tool **does not** require all dependent libraries (FancyGrid and React) in the production file. It allows the user to use any bundling tool they choose such as browserify or webpack.
