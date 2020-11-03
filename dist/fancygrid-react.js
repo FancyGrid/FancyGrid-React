@@ -3,12 +3,12 @@ import Fancy from 'fancygrid';
 
 class Grid extends React.Component {
   render() {
-		let self = this,
+		let me = this,
   	  containerProps = this.props.containerProps || {};
 
     // Add ref to div props
     containerProps.ref = function (container) {
-	  	self.container = container
+	  	me.container = container
 		}
 
     // Create temp container for our grid
@@ -21,7 +21,7 @@ class Grid extends React.Component {
 			config = me.props.config || {},
 			container = me.container;
 	
-		for(var p in props){
+		for(let p in props){
 			switch(p){
 				case 'config':
 					break;
@@ -44,12 +44,12 @@ class Grid extends React.Component {
 
 class Form extends React.Component {
   render() {
-		let self = this,
+		let me = this,
   	  containerProps = this.props.containerProps || {};
 
     // Add ref to div props
     containerProps.ref = function (container) {
-	  	self.container = container
+	  	me.container = container
 		}
 
     // Create temp container for our grid
@@ -79,12 +79,12 @@ class Form extends React.Component {
 
 class Tab extends React.Component {
   render() {
-		let self = this,
+		let me = this,
   	  containerProps = this.props.containerProps || {};
 
     // Add ref to div props
     containerProps.ref = function (container) {
-	  	self.container = container
+	  	me.container = container
 		}
 
     // Create temp container for our grid
@@ -97,7 +97,7 @@ class Tab extends React.Component {
 		  config = me.props.config || {},
 		  container = me.container;
 	
-		for(var p in props){
+		for(let p in props){
 			switch(p){
 				case 'config':
 					break;
@@ -123,4 +123,4 @@ export {
   Grid as FancyGridReact,
   Form as FancyFormReact,
   Tab as FancyTabReact
-};
+}
