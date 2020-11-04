@@ -36,7 +36,7 @@ class Grid extends React.Component {
 	}
 
 	componentWillUnmount() {
-		if(this.widget.el.dom){
+		if(this.widget.el && this.widget.el.dom){
 			this.widget.destroy(false);
 		}
 	}
@@ -62,7 +62,7 @@ class Form extends React.Component {
 			config = me.props.config || {},
 			container = me.container;
 
-		for(var p in props){
+		for(let p in props){
 			switch(p){
 				case 'config':
 					break;
@@ -106,7 +106,7 @@ class Tab extends React.Component {
 			}
 		}
 
-		config.renderTo = container;
+		config.renderOuter = container;
 
 		me.widget = new Fancy.Tab(config);
 	}

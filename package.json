@@ -1,6 +1,6 @@
 {
   "name": "fancygrid-react",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "React components to generate interactive javascript grids using the FancyGrid library",
   "main": "dist/fancygrid-react.min.js",
   "author": "FancyGrid",
