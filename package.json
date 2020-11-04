@@ -1,8 +1,8 @@
 {
   "name": "fancygrid-react",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "React components to generate interactive javascript grids using the FancyGrid library",
-  "main": "dist/fancygrid-react.js",
+  "main": "dist/fancygrid-react.min.js",
   "author": "FancyGrid",
   "homepage": "https://fancygrid.com",
   "scripts": {},
@@ -17,6 +17,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
     "fancygrid": "^1.7.129",
     "react": "^16.2.0"
   },

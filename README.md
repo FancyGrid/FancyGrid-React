@@ -18,10 +18,6 @@ npm install fancygrid-react
 
 ### Usage
 
-This component is dependent upon React and the FancyGrid library. The module uses the CommonJS specification and can be included in your application with bundling tools such as browserify and webpack. 
-
----
-
 The FancyGrid-React Component exposes 3 components.
 * `Grid`
 * `Form`
@@ -32,7 +28,6 @@ All components are wrappers around the entire widgets of FancyGrid.
 The simplest one approach is to use config with widget options.  
 
 ```js
-//JavaScript
 import {Grid, Fancy, Form, Tab} from 'fancygrid-react';
 
 ...
@@ -44,7 +39,7 @@ const getFancyGrid = () => {
         title={'Form'}
         items={[{
           name: 'id',
-          hidden: true
+          type: 'hidden'
         },{
           label: 'Name',
           emptyText: 'Name',

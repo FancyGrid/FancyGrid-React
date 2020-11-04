@@ -28,11 +28,8 @@ export {
   Fancy,
   Grid,
   Grid as FancyGridReact,
-  Grid as grid,
   Form,
   Form as FancyFormReact,
-  Form as form,
   Tab,
-  Tab as FancyTabReact,
-  Tab as tab
+  Tab as FancyTabReact
 };
