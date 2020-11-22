@@ -1,11 +1,13 @@
 {
   "name": "fancygrid-react",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "React components to generate interactive javascript grids using the FancyGrid library",
-  "main": "dist/fancygrid-react.min.js",
+  "main": "dist/fancygrid-react.js",
   "author": "FancyGrid",
   "homepage": "https://fancygrid.com",
-  "scripts": {},
+  "scripts": {
+    "build": "gulp && gulp prod"
+  },
   "keywords": [
     "react",
     "react-component",
@@ -15,11 +17,16 @@
     "javascript",
     "fancygrid"
   ],
-  "license": "MIT",
+  "license": "Commercial",
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "fancygrid": "^1.7.129",
+    "@babel/core": "^7.12.7",
+    "@babel/preset-env": "^7.12.7",
+    "fancygrid": "^1.7.139",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-react": "^4.0.0",
+    "gulp-uglify": "^3.0.2",
     "react": "^16.2.0"
   },
   "peerDependencies": {

@@ -1,6 +1,47 @@
 import React from 'react';
 import Fancy from 'fancygrid';
 
+const CHANGABLE_GRID_PROPS = {
+	title: {
+		type: 'string',
+		handler: (grid, value)=>{
+			console.log(value);
+			grid.setTitle(value);
+		}
+	},
+	subTitle: {
+		type: 'string',
+		handler: (grid, value)=>{
+			grid.setSubTitle(value);
+		}
+	},
+	columns: {
+		type: 'array',
+		handler: (grid, columns)=>{
+			grid.setColumns(columns);
+		}
+	},
+	data: {
+		type: 'array',
+		handler: (grid, data)=>{
+			grid.setData(data);
+			grid.update();
+		}
+	},
+	width: {
+		type: 'number',
+		handler: (grid, value)=>{
+			grid.setWidth(value);
+		}
+	},
+	height: {
+		type: 'number',
+		handler: (grid, value)=>{
+			grid.setHeight(value);
+		}
+	}
+};
+
 class Grid extends React.Component {
 	render() {
 		let me = this,
@@ -38,6 +79,66 @@ class Grid extends React.Component {
 	componentWillUnmount() {
 		if(this.widget.el && this.widget.el.dom){
 			this.widget.destroy(false);
+		}
+	}
+
+	componentDidUpdate(prevProps) {
+		this.processPropsChanges(prevProps, this.props);
+	}
+
+	shouldComponentUpdate(nextProps) {
+		this.processPropsChanges(this.props, nextProps);
+		return false;
+	}
+
+	processPropsChanges(prevProps, nextProps) {
+		let changes = this.getChanges(prevProps, nextProps);
+	}
+
+	getChanges(prevProps, nextProps) {
+		for(let p in prevProps){
+			if(!CHANGABLE_GRID_PROPS[p]){
+				continue;
+			}
+
+			let prevValue = prevProps[p],
+				nextValue = nextProps[p],
+				type = CHANGABLE_GRID_PROPS[p].type;
+
+			if(Fancy.typeOf(prevValue) !== type || Fancy.typeOf(nextValue) !== type){
+				continue;
+			}
+
+			switch(type){
+				case 'string':
+				case 'number':
+					if(prevValue !== nextValue){
+						CHANGABLE_GRID_PROPS[p].handler(this.widget, nextValue);
+					}
+					break;
+				case 'array':
+					if(prevValue.length !== nextValue.length){
+						CHANGABLE_GRID_PROPS[p].handler(this.widget, nextValue);
+					}
+					else{
+						prevValue.some((item, i) => {
+							if(typeof item === 'object'){
+								for(let q in item){
+									if(item[q] !== nextValue[i][q]){
+										CHANGABLE_GRID_PROPS[p].handler(this.widget, nextValue);
+										return true;
+									}
+								}
+							}
+						});
+					}
+					break;
+				case 'object':
+					if(prevValue.toString() !== nextValue.toString()){
+						CHANGABLE_GRID_PROPS[p].handler(this.widget, nextValue);
+					}
+					break;
+			}
 		}
 	}
 }

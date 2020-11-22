@@ -35,6 +35,7 @@ const getFancyGrid = () => {
   return (
     <div style={{marginTop: '5px'}}>
       <Form
+        id={'myForm'}
         theme={'extra-gray'}
         title={'Form'}
         items={[{
@@ -44,15 +45,31 @@ const getFancyGrid = () => {
           label: 'Name',
           emptyText: 'Name',
           name: 'name'
-        }, {
+        },{
           label: 'SurName',
           emptyText: 'SurName',
           name: 'surname'
+        }]}
+        buttons={[{
+          text: 'Save',
+          handler: () => {
+            let grid = Fancy.getGrid('myGrid'),
+              form = Fancy.getForm('myForm'),
+              values = form.get(),
+              id = values.id;
+
+            grid.setById(id, values);
+            grid.update({
+              type: 'row'
+            });
+          }
         }]}>
       </Form>
       <Grid
+        id={'myGrid'}
         height={500}
         theme={'extra-gray'}
+        exporter={true}
         selModel={{
           activeCell: true,
           type: 'rows'
@@ -61,6 +78,13 @@ const getFancyGrid = () => {
           resizable: true,
           menu: true
         }}
+        events={[{
+          selectrow: (grid, rowIndex, dataItem: any) => {
+            let form = Fancy.getForm('myForm');
+
+            form.set(dataItem.data);
+          }
+        }]}
         columns={getColumns()}
         data={getData()}>
       </Grid>
